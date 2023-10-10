@@ -11,3 +11,11 @@ boutonFiltreTous.addEventListener("click", async function() {
     document.querySelector(".galery").innerHTML="";
     await init (elements);
 })
+
+boutonFiltreObjets.addEventListener("click", async function(){
+const elementsFiltres = elements.filter(function(element) {
+    return element.categoryId ==1;
+});
+document.querySelector (".gallery").innerHTML ="";
+await init(elementsFiltres);
+})
