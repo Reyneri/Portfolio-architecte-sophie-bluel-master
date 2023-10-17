@@ -9,17 +9,20 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="script.js" defer></script>
+	<script src="api.js" defer></script>
+	
+
 </head>
 <body>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li>login</li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li class="liste-header" id="portfolio"><a href="#portfolio">projets</a></li>
+				<li class="liste-header" id="contact-btn">contact</li>
+				<li class="liste-header login-btn"><a href="pages/login.html">login</a></li>
+				<li class="liste-header logout-btn"><a>logout</a></li>
+				<li class="liste-header"><img src="/assets/icons/instagram.png" alt="Instagram" class="instagram"></li>
 		</ul>
 	</nav>
 </header>
@@ -42,12 +45,12 @@
 				<button class="Tous_btn selected">Tous</button>
 				<button class="Objets_btn">Objets</button>
 				<button class="Appartements_btn">Appartements</button>
-				<button class="Hôtels-restaurants_btn">Hôtels & restaurants</button>
+				<button class="Hotels-restaurants_btn">Hôtels & restaurants</button>
 			</div>
 		</div>
 
 		<div class="gallery">
-			<figure>
+			<!-- <figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
 				<figcaption>Abajour Tahina</figcaption>
 			</figure>
@@ -91,7 +94,7 @@
 				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
 				<figcaption>Hotel First Arte - New Delhi</figcaption>
 			</figure>
-		</div>
+		</div> -->
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>
@@ -115,5 +118,6 @@
 		</ul>
 	</nav>
 </footer>
+<script type="module" src="script.js" defer></script>
 </body>
 </html>
