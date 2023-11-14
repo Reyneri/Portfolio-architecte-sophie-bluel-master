@@ -73,7 +73,7 @@ $couleur-fond: #FFFEF8;
 		font-size: 24px;
 		background-color: #FFFEF8;
 		position: absolute;
-		top: -3px;
+		top: 0.9rem;
 		left: 24px;
 		cursor: pointer;
 	}
@@ -95,6 +95,7 @@ $couleur-fond: #FFFEF8;
 		display: none;
 		img {
 			height: 169px;
+			max-width:76px;
 		}
 	}
 	img {

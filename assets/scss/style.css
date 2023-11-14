@@ -350,7 +350,7 @@ body, html {
   font-size: 24px;
   background-color: #FFFEF8;
   position: absolute;
-  top: -3px;
+  top: 0.9rem;
   left: 24px;
   cursor: pointer;
 }
@@ -373,6 +373,7 @@ body, html {
 }
 .modal-container-ajout .ajout-photo-after img {
   height: 169px;
+  max-width: 76px;
 }
 .modal-container-ajout img {
   margin-top: 22px;
