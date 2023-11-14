@@ -15,8 +15,8 @@ window.onload = function () {
         const data = await response.json();
         if (response.ok) {
             const token = data.token;
-            window.localStorage.setItem("appToken", token);
-            console.log("Token stocké : ", window.localStorage.getItem("appToken"));
+            window.sessionStorage.setItem("appToken", token);
+            
             return "userisConnected";
         } else {
             return false;

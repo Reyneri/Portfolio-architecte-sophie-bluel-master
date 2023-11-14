@@ -26,19 +26,29 @@ a{
 
 
 nav {
+  
+ 
     ul {
+     
       display: flex;
       align-items: center;
       list-style-type: none;
     }
   
     li {
+      
       padding: 0 10px;
       font-size: 1.2em;
+      margin-left: 2rem;
   
       &:hover {
-        color: $main-color;
+        a{
+          font-weight: bolder;
+        color: black;
+        }
       }
+
+      
     }
   }
 
@@ -48,3 +58,10 @@ nav {
   .logout-btn {
     display: none;
   }
+
+  .instagram {
+	
+    width: 1rem;
+    cursor: pointer;
+  }
+  

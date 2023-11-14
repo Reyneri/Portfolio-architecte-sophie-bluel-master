@@ -466,11 +466,6 @@ body, html {
 }
 
 /* header */
-.instagram {
-  width: 17px;
-  cursor: pointer;
-}
-
 header {
   display: flex;
   justify-content: space-between;
@@ -494,9 +489,11 @@ nav ul {
 nav li {
   padding: 0 10px;
   font-size: 1.2em;
+  margin-left: 2rem;
 }
-nav li:hover {
-  color: #B1663C;
+nav li:hover a {
+  font-weight: bolder;
+  color: black;
 }
 
 .login-btn {
@@ -505,6 +502,11 @@ nav li:hover {
 
 .logout-btn {
   display: none;
+}
+
+.instagram {
+  width: 1rem;
+  cursor: pointer;
 }
 
 footer nav ul {

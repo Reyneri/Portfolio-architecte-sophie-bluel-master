@@ -94,7 +94,7 @@ function updateSelectedButton(selectedButton) {
 // qund cette fonction appele on affiche tout les element
 // Fonction pour activer l'interface admin
 async function adminConnected() {
-    const token = window.localStorage.getItem('appToken');
+    const token = window.sessionStorage.getItem('appToken');
     console.log("Token récupéré : ", token);
 
 
@@ -115,10 +115,10 @@ async function adminConnected() {
 
 // function isDisconnected{}
 function disconnected() {
-    const token = window.localStorage.getItem("appToken");
+    const token = window.sessionStorage.getItem("appToken");
 
     if (token) {
-        window.localStorage.removeItem("appToken")
+        window.sessionStorage.removeItem("appToken")
     }
 }
 logoutBtn.addEventListener("click", disconnected);
@@ -209,6 +209,13 @@ document.getElementById('ajouterPhotoBtn').addEventListener('click', function ()
 document.getElementById('inputPhoto').addEventListener('change', async function (e) {
     const file = e.target.files[0];
     if (file) {
+// gestion de la taille du  fichier image autorisé 
+        if (file.size > 4 * 1024 * 1024) {
+            alert('Le fichier est trop volumineux. Veuillez selectioner un ficher de moins de 4 mo.');
+            return;
+        }
+
+
         const reader = new FileReader();
         reader.onload = function (event) {
             const imgElement = document.createElement('img');
@@ -264,7 +271,7 @@ async function initModalGallery(elements) {
         icon.className = 'fa-solid fa-trash-can';
         icon.addEventListener('click', async function () {
             const projetId = this.parentNode.getAttribute('data-projet-id');
-            const token = window.localStorage.getItem('appToken');
+            const token = window.sessionStorage.getItem('appToken');
             if (!token) {
                 console.error('Token d\'authentification manquant');
                 return;
@@ -278,7 +285,7 @@ async function initModalGallery(elements) {
                 });
                 if (response.ok) {
                     this.parentNode.remove(); // Suppression du conteneur de l'image du DOM
-                    const allWorks =await getAllWorks();
+                    // const allWorks = await getAllWorks();
                     init(allWorks)
                 } else {
                     console.error(`Échec de la suppression du projet. Statut de la réponse: ${response.status}`);
@@ -295,8 +302,7 @@ async function initModalGallery(elements) {
 }
 
 
- //voir event listener pour eng la gall modal
-// console.log(initModalGallery)
+
 
 
 // Fonction pour charger et afficher la galerie modal
@@ -334,7 +340,7 @@ async function AjoutPhoto() {
     formData.append('category', category);
 
     // Récupere le token depuis le localStorage
-    const token = window.localStorage.getItem('appToken');
+    const token = window.sessionStorage.getItem('appToken');
 
     // Préparer les en-têtes de la requête, y compris le token d'autorisation
     const headers = new Headers();
@@ -352,11 +358,14 @@ async function AjoutPhoto() {
         if (response.ok) {
             const workAdded = await response.json();
             console.log('Projet ajouté:', workAdded);
-            const allWorks =await getAllWorks();
-            init(allWorks);
             
+            ajoutPhotoModalGallery(workAdded);
+            formElement.reset();
+            // const allWorks = await getAllWorks();
+            // init(allWorks);
+
             // Reinit le formulaire 
-            document.getElementById('formPhoto').reset();
+            // document.getElementById('formPhoto').reset();
 
         } else {
             console.error('Erreur lors de l\'ajout du projet:', response.statusText);
@@ -366,7 +375,15 @@ async function AjoutPhoto() {
     }
 }
 
-document.getElementById('formPhoto').addEventListener('submit', function(event) {
+document.getElementById('formPhoto').addEventListener('submit', function (event) {
     event.preventDefault(); // Empêcher le formulaire de recharger la page
     AjoutPhoto();
 });
+
+
+async function ajoutPhotoModalGallery(work) {
+    const modalGallery = document.querySelector('.tri-photos');
+    const container = document.createElement('div');
+
+    modalGallery.appendChild(container);
+};
